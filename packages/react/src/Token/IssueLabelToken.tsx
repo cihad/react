@@ -163,7 +163,7 @@ const IssueLabelToken = forwardRef((props, forwardedRef) => {
             href,
             onClick,
           }
-        : {as: 'span'})}
+        : {forwardedAs: 'span'})}
       {...rest}
       ref={forwardedRef}
     >
