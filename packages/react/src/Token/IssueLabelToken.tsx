@@ -34,7 +34,7 @@ export type Variant =
   | 'brown'
   | 'auburn'
 
-export interface IssueLabelTokenProps extends TokenBaseProps {
+export interface IssueLabelTokenProps extends Omit<TokenBaseProps, 'size'> {
   // this seems not to work to exlude as property from TokenBaseProps
   variant?: Variant
   fillColor?: string
@@ -148,7 +148,6 @@ const IssueLabelToken = forwardRef((props, forwardedRef) => {
       onRemove={onRemove}
       id={id?.toString()}
       text={text}
-      size="medium"
       style={
         {
           '--label-bgColor-rest': backgroundColor,
@@ -164,7 +163,8 @@ const IssueLabelToken = forwardRef((props, forwardedRef) => {
             onClick,
           }
         : {forwardedAs: 'span'})}
-      {...rest}
+      // add size in case it is added from the outside
+      {...{...rest, size: 'medium'}}
       ref={forwardedRef}
     >
       <TokenTextContainer {...(hasMultipleActionTargets ? {...interactiveTokenProps} : {})}>{text}</TokenTextContainer>
