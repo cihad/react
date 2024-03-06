@@ -60,7 +60,7 @@ export const Default: StoryObj = ({variant, text, ...args}: {variant: Variant; t
         padding: 2,
       }}
     >
-      <IssueLabelToken {...args} size={'medium'} text={text} variant={variant} />
+      <IssueLabelToken {...args} text={text} variant={variant} />
     </Box>
   )
 }
@@ -189,7 +189,6 @@ const getRandomLabels = (amount: number, asVariant = true, args: {interactive?: 
       (
         <IssueLabelToken
           key={i}
-          size={'medium'}
           variant={asVariant ? variant : undefined}
           fillColor={!asVariant ? hex : undefined}
           text={text}
@@ -229,13 +228,7 @@ export const Playground: StoryObj = ({
         padding: 2,
       }}
     >
-      <IssueLabelToken
-        {...args}
-        size={'medium'}
-        text={text}
-        variant={variant}
-        onClick={interactive ? () => {} : undefined}
-      />
+      <IssueLabelToken {...args} text={text} variant={variant} onClick={interactive ? () => {} : undefined} />
       {tokens}
     </Box>
   )
