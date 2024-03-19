@@ -73,7 +73,14 @@ const getLabelColors = (
   return variantColors('gray')
 }
 
-const StyledIssueLabelToken: typeof TokenBase = styled(TokenBase)`
+const StyledIssueLabelToken: typeof TokenBase = styled(TokenBase).withConfig({
+  shouldForwardProp(prop, validator) {
+    if (prop === 'onRemove') {
+      return true
+    }
+    return validator(prop)
+  },
+})`
   background-color: var(--label-bgColor-rest);
   color: var(--label-fgColor);
   padding-right: ${props => (!props.onRemove ? undefined : 0)};
