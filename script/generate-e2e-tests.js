@@ -464,7 +464,7 @@ const components = new Map([
     },
   ],
   [
-    'Dialog v1',
+    'DialogV1',
     {
       stories: [
         {
@@ -1334,6 +1334,17 @@ const components = new Map([
     },
   ],
   [
+    'TabPages',
+    {
+      stories: [
+        {
+          id: 'components-tabpages--default',
+          name: 'Default',
+        },
+      ],
+    },
+  ],
+  [
     'Timeline',
     {
       stories: [
@@ -1415,7 +1426,7 @@ const components = new Map([
     },
   ],
   [
-    'Tooltip V2',
+    'TooltipV2',
     {
       stories: [
         {

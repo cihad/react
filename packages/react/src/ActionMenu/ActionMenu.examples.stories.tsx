@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, ActionMenu, ActionList, Button, IconButton} from '../'
+import {Box, ActionMenu, ActionList, Button, IconButton, FormControl, TextInput} from '../'
 import {
   GearIcon,
   MilestoneIcon,
@@ -184,6 +184,15 @@ export const ShortcutMenu = () => {
       <br />
 
       {/**
+       * This is used to demonstrate mouse/keyboard modality
+       * and how it might affect `:focus-visible` styles in the menu.
+       */}
+      <FormControl>
+        <FormControl.Label>Default label</FormControl.Label>
+        <TextInput />
+      </FormControl>
+
+      {/**
        * Even though the state is controlled externally,
        * we can pass an Anchor for the menu to "anchor to"
        */}
@@ -209,6 +218,7 @@ export const ShortcutMenu = () => {
               Edit comment
               <ActionList.TrailingVisual>⌘E</ActionList.TrailingVisual>
             </ActionList.Item>
+            <ActionList.LinkItem href="#">View file</ActionList.LinkItem>
             <ActionList.Divider />
             <ActionList.Item variant="danger">
               Delete file
@@ -224,6 +234,35 @@ export const ShortcutMenu = () => {
 export const CustomAnchor = () => (
   <ActionMenu>
     <ActionMenu.Anchor>
+      <IconButton icon={KebabHorizontalIcon} aria-label="Open menu" />
+    </ActionMenu.Anchor>
+    <ActionMenu.Overlay width="medium">
+      <ActionList>
+        <ActionList.Item onSelect={() => alert('Copy link clicked')}>
+          Copy link
+          <ActionList.TrailingVisual>⌘C</ActionList.TrailingVisual>
+        </ActionList.Item>
+        <ActionList.Item onSelect={() => alert('Quote reply clicked')}>
+          Quote reply
+          <ActionList.TrailingVisual>⌘Q</ActionList.TrailingVisual>
+        </ActionList.Item>
+        <ActionList.Item onSelect={() => alert('Edit comment clicked')}>
+          Edit comment
+          <ActionList.TrailingVisual>⌘E</ActionList.TrailingVisual>
+        </ActionList.Item>
+        <ActionList.Divider />
+        <ActionList.Item variant="danger" onSelect={() => alert('Delete file clicked')}>
+          Delete file
+          <ActionList.TrailingVisual>⌘D</ActionList.TrailingVisual>
+        </ActionList.Item>
+      </ActionList>
+    </ActionMenu.Overlay>
+  </ActionMenu>
+)
+
+export const CustomAnchorId = () => (
+  <ActionMenu>
+    <ActionMenu.Anchor id="custom-anchor-id">
       <IconButton icon={KebabHorizontalIcon} aria-label="Open menu" />
     </ActionMenu.Anchor>
     <ActionMenu.Overlay width="medium">
